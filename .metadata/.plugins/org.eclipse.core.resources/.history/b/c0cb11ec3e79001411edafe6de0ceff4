@@ -1,0 +1,10 @@
+package serpis.ad;
+
+public class MySql {
+
+	public static void main(String[] args) throws ClassNotFoundException {
+		System.out.println("Hola MySql desde eclipse");
+		Class.forName("com.mysql.jdbc.Driver");
+	}
+
+}
