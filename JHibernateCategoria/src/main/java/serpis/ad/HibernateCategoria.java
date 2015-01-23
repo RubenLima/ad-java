@@ -19,6 +19,7 @@ public class HibernateCategoria {
 				Persistence.createEntityManagerFactory("serpis.ad.jpa.mysql");
 		
 		showCategorias();
+		showArticulos();
 		
 		entityManagerFactory.close();
 	}
@@ -45,6 +46,19 @@ public class HibernateCategoria {
 		List<Categoria> categorias = entityManager.createQuery("from Categoria", Categoria.class).getResultList();
 		for (Categoria categoria : categorias)
 			System.out.printf("id=%d nombre=%s\n" , categoria.getId(),categoria.getNombre());
+						
+		entityManager.getTransaction().commit();
+		entityManager.close();
+		
+	}
+	public static void showArticulo(){
+		
+		
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
+		List<Articulo> articulos = entityManager.createQuery("from Articulo", Articulo.class).getResultList();
+		for (Articulo articulo : articulos)
+			System.out.printf("id=%d nombre=%s\n" , articulo.getId(),articulo.getNombre(),articulo.getCategoria());
 						
 		entityManager.getTransaction().commit();
 		entityManager.close();
